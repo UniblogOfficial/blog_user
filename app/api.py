@@ -20,8 +20,7 @@ app.config['MONGODB_SETTINGS'] = {
 initialize_db(app)
 
 app.config['SECRET_KEY'] = 'super-secret'
-app.config['JWT_SECRET_KEY'] = app.config['SECRET_KEY']
-app.config['JWT_ACCESS_TOKEN_EXPRESS'] = False
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = False
 
 swagger = Swagger(app)
 
