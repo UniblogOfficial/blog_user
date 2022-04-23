@@ -1,11 +1,18 @@
 from .db import db
 
-class User(db.Document):
-    #id =
-    #profile_image =
-    #user_id =
-    name = db.StringField(unique=True)
+
+class Social(db.Document):
+    social_name = db.StringField()
+    #user = db.ReferenceField(User)
+    login = db.StringField()
     password = db.StringField()
-    email = db.StringField(unique=True, required=True)
-    #frends_liist
-    #sicial
+    token = db.StringField()
+
+
+class User(db.Document):
+    profile_image = db.FileField()
+    name = db.StringField(unique=True)
+    password = db.StringField(required=True)
+    email = db.EmailField(unique=True, required=True)
+    social = db.ListField(db.ReferenceField(Social))
+
